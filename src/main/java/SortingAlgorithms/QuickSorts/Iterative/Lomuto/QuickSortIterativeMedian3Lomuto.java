@@ -14,13 +14,6 @@ public class QuickSortIterativeMedian3Lomuto implements Sorting {
         quicksort(nums);
 
     }
-    private void validateParams(double[] nums) {
-        if(Objects.isNull(nums)) {
-            if (nums == null) {
-                throw new IllegalArgumentException("Input args (nums) cannot be null!");
-            }
-        }
-    }
 
     private void quicksort(double[] data) {
         List<Integer> starts = new ArrayList<>();
@@ -101,10 +94,5 @@ public class QuickSortIterativeMedian3Lomuto implements Sorting {
         return 0;
     }
 
-    private void swap(double[] nums, int firstId, int secondId) {
-        double tmp = nums[secondId];
-        nums[secondId] = nums[firstId];
-        nums[firstId] = tmp;
-    }
 
 }

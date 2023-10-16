@@ -78,14 +78,6 @@ public class QuickSortIterative implements Sorting {
         return left;
     }
 
-    private void swap(double[] data, int firstId, int secondId) {
-        if (firstId != secondId) {
-            double firstValue = data[firstId];
-            data[firstId] = data[secondId];
-            data[secondId] = firstValue;
-        }
-    }
-
     public void printTab(double[] tab) {
         if (tab != null) {
             System.out.print("[");

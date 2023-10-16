@@ -1,4 +1,4 @@
-package SortingAlgorithms.QuickSorts.Iterative.Lomuto;
+package SortingAlgorithms.QuickSorts.Iterative.Hoare;
 
 
 import SortingAlgorithms.services.Sorting;
@@ -6,10 +6,8 @@ import SortingAlgorithms.services.Sorting;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
-public class QuickSortIterativeRandomLomuto implements Sorting {
-
+public class QuickSortIterativeHoare implements Sorting {
     @Override
     public void sort(double[] nums) {
         validateParams(nums);
@@ -47,31 +45,27 @@ public class QuickSortIterativeRandomLomuto implements Sorting {
             }
         }
     }
-
     private int splitData(double[] data, int start, int end) {
-        double pivot = data[randomPivot(data, start, end)];
+        double pivot = data[start];
 
-        int a = start - 1;
-        int b = start;
-
-        while (b < end) {
-            if (data[b] <= pivot) {
-                a++;
-                swap(data, a, b);
+        int left = start + 1;
+        int right = end;
+        while(left < right) {
+            while(left < right && data[left] < pivot) {
+                left++;
             }
-            b++;
+
+            while(left < right && data[right] >= pivot) {
+                right--;
+            }
+            swap(data, left, right);
         }
-        swap(data, a + 1, end);
-        return a + 1;
+        if(data[left] >= pivot) {
+            left--;
+        }
+        swap(data, start, left);
+
+        return left;
+
     }
-
-    private int randomPivot(double[] data, int start, int end) {
-        Random random = new Random();
-        int pivot = random.nextInt(end - start + 1) + start;
-        swap(data, pivot, end);
-
-        return end;
-    }
-
-
 }

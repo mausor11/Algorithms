@@ -100,10 +100,4 @@ public class QuickSortIterativeMedianOf3 implements Sorting {
         }
         return 0;
     }
-
-    private void swap(double[] nums, int firstId, int secondId) {
-        double tmp = nums[secondId];
-        nums[secondId] = nums[firstId];
-        nums[firstId] = tmp;
-    }
 }

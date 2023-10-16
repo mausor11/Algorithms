@@ -15,13 +15,6 @@ public class QuickSortIterativeWithInSortLomuto implements Sorting {
 
         quicksort(nums);
     }
-    private void validateParams(double[] nums) {
-        if(Objects.isNull(nums)) {
-            if (nums == null) {
-                throw new IllegalArgumentException("Input args (nums) cannot be null!");
-            }
-        }
-    }
 
     private void quicksort(double[] data) {
         List<Integer> starts = new ArrayList<>();
@@ -90,12 +83,5 @@ public class QuickSortIterativeWithInSortLomuto implements Sorting {
         return a + 1;
     }
 
-    private void swap(double[] data, int firstId, int secondId) {
-        if (firstId != secondId) {
-            double firstValue = data[firstId];
-            data[firstId] = data[secondId];
-            data[secondId] = firstValue;
-        }
-    }
 
 }
