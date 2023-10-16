@@ -1,24 +1,27 @@
-package SortingAlgorithms.QuickSorts.Iterative;
+package SortingAlgorithms.QuickSorts.Iterative.Lomuto;
+
 
 import SortingAlgorithms.services.Sorting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 
-public class QuickSortIterative implements Sorting {
-    /**
-     * This method takes a {@code double} table and sorts using "Quick Sort Classic Version"
-     * @param nums
-     *          Unsorted table
-     * @throws IllegalArgumentException table is null
-     */
+public class QuickSortIterativeRandomLomuto implements Sorting {
+
     @Override
     public void sort(double[] nums) {
-        if (nums == null) {
-            throw new IllegalArgumentException("Input args (nums) cannot be null!");
-        }
+        validateParams(nums);
 
         quicksort(nums);
+    }
+    private void validateParams(double[] nums) {
+        if(Objects.isNull(nums)) {
+            if (nums == null) {
+                throw new IllegalArgumentException("Input args (nums) cannot be null!");
+            }
+        }
     }
 
     private void quicksort(double[] data) {
@@ -54,28 +57,28 @@ public class QuickSortIterative implements Sorting {
     }
 
     private int splitData(double[] data, int start, int end) {
-        int left = start + 1;
-        int right = end;
+        double pivot = data[randomPivot(data, start, end)];
 
-        while (left < right) {
-            while (left < right && data[left] < data[start]) {
-                left++;
+        int a = start - 1;
+        int b = start;
+
+        while (b < end) {
+            if (data[b] <= pivot) {
+                a++;
+                swap(data, a, b);
             }
-
-            while (left < right && data[right] >= data[start]) {
-                right--;
-            }
-
-            swap(data, left, right);
+            b++;
         }
+        swap(data, a + 1, end);
+        return a + 1;
+    }
 
-        if (data[left] >= data[start]) {
-            left--;
-        }
+    private int randomPivot(double[] data, int start, int end) {
+        Random random = new Random();
+        int pivot = random.nextInt(end - start + 1) + start;
+        swap(data, pivot, end);
 
-        swap(data, start, left);
-
-        return left;
+        return end;
     }
 
     private void swap(double[] data, int firstId, int secondId) {
@@ -86,13 +89,4 @@ public class QuickSortIterative implements Sorting {
         }
     }
 
-    public void printTab(double[] tab) {
-        if (tab != null) {
-            System.out.print("[");
-            for (int i = 0; i < tab.length - 1; i++) {
-                System.out.print(tab[i] + ",");
-            }
-            System.out.println(tab[tab.length - 1] + "]");
-        }
-    }
 }

@@ -1,5 +1,7 @@
 package SearchingAlgorithms;
 
+import SearchingAlgorithms.services.Searching;
+
 public class BinarySearch implements Searching {
     /**
      * This method takes a {@code double} and binary searches int the give table {@code double[]}

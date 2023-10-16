@@ -1,25 +1,25 @@
-package SortingAlgorithms.QuickSorts.Iterative;
+package SortingAlgorithms.QuickSorts.Iterative.Lomuto;
 
 import SortingAlgorithms.services.Sorting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class QuickSortIterativeMedianOf3 implements Sorting {
-    /**
-     * This method takes a {@code double} table and sorts using "Quick Sort Median of Three"
-     * @param nums
-     *          Unsorted table
-     * @throws IllegalArgumentException table is null
-     */
+public class QuickSortIterativeMedian3Lomuto implements Sorting {
     @Override
     public void sort(double[] nums) {
-        if (nums == null) {
-            throw new IllegalArgumentException("Input args (nums) cannot be null!");
-        }
+        validateParams(nums);
 
         quicksort(nums);
 
+    }
+    private void validateParams(double[] nums) {
+        if(Objects.isNull(nums)) {
+            if (nums == null) {
+                throw new IllegalArgumentException("Input args (nums) cannot be null!");
+            }
+        }
     }
 
     private void quicksort(double[] data) {
@@ -57,7 +57,7 @@ public class QuickSortIterativeMedianOf3 implements Sorting {
         sortFirstMidLastElements(data, start, end);
         int left = start + 1;
         int right = end - 1;
-        int pivot = end - 1;
+        int pivot = end;
         while (left < right) {
             while (left < right && data[left] < data[pivot]) {
                 left++;
@@ -90,7 +90,7 @@ public class QuickSortIterativeMedianOf3 implements Sorting {
         nums[start] = median[0];
         nums[mid] = median[1];
         nums[end] = median[2];
-        swap(nums, mid, end - 1);
+        swap(nums, mid, end);
 
     }
 
@@ -106,4 +106,5 @@ public class QuickSortIterativeMedianOf3 implements Sorting {
         nums[secondId] = nums[firstId];
         nums[firstId] = tmp;
     }
+
 }

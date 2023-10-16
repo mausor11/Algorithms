@@ -1,6 +1,8 @@
 package SearchingAlgorithms;
 
-public class SequentialSearch implements Searching{
+import SearchingAlgorithms.services.Searching;
+
+public class SequentialSearch implements Searching {
     /**
      * This method takes a {@code double} and sequentially searches int the give table {@code double[]}
      * @param v
