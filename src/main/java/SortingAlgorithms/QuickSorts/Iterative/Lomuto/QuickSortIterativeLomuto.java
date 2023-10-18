@@ -17,35 +17,40 @@ public class QuickSortIterativeLomuto implements Sorting {
     }
 
     private void quicksort(double[] data) {
-        List<Integer> starts = new ArrayList<>();
-        List<Integer> ends = new ArrayList<>();
-        Integer left = 0;
-        Integer right = data.length - 1;
-        starts.add(left);
-        ends.add(right);
-        int n = 1;
-        int pivot;
+        if(!isSorted(data)) {
+            List<Integer> starts = new ArrayList<>();
+            List<Integer> ends = new ArrayList<>();
+            Integer left = 0;
+            Integer right = data.length - 1;
+            starts.add(left);
+            ends.add(right);
+            int n = 1;
+            int pivot;
 
-        if (left < right) {
+            if (left < right) {
 
-            while (n > 0) {
-                n--;
-                left = starts.remove(n);
-                right = ends.remove(n);
-                pivot = splitData(data, left, right);
-                if (pivot - 1 > left) {
-                    starts.add(left);
-                    ends.add(pivot - 1);
-                    n++;
-                }
+                while (n > 0) {
+                    n--;
+                    left = starts.remove(n);
+                    right = ends.remove(n);
+                    pivot = splitData(data, left, right);
+                    if (pivot - 1 > left) {
+                        starts.add(left);
+                        ends.add(pivot - 1);
+                        n++;
+                    }
 
-                if (pivot + 1 < right) {
-                    starts.add(pivot + 1);
-                    ends.add(right);
-                    n++;
+                    if (pivot + 1 < right) {
+                        starts.add(pivot + 1);
+                        ends.add(right);
+                        n++;
+                    }
                 }
             }
+        } else {
+            System.out.println("W");
         }
+
     }
 
     private int splitData(double[] data, int start, int end) {
@@ -64,6 +69,7 @@ public class QuickSortIterativeLomuto implements Sorting {
         swap(data, a + 1, end);
         return a + 1;
     }
+
 
 
 

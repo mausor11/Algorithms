@@ -48,22 +48,20 @@ public class QuickSortIterativeMedian3Lomuto implements Sorting {
 
     private int splitData(double[] data, int start, int end) {
         sortFirstMidLastElements(data, start, end);
-        int left = start + 1;
-        int right = end - 1;
-        int pivot = end;
-        while (left < right) {
-            while (left < right && data[left] < data[pivot]) {
-                left++;
-            }
+        double pivot = data[end];
 
-            while (left < right && data[right] >= data[pivot]) {
-                right--;
+        int a = start;
+        int b = start + 1;
+
+        while (b < end) {
+            if (data[b] <= pivot) {
+                a++;
+                swap(data, a, b);
             }
-            swap(data, left, right);
+            b++;
         }
-
-        swap(data, left, pivot);
-        return left;
+        swap(data, a + 1, end);
+        return a + 1;
     }
 
     private void sortFirstMidLastElements(double[] nums, int start, int end) {
