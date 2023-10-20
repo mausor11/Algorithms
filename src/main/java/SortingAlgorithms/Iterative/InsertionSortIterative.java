@@ -1,10 +1,10 @@
-package SortingAlgorithms;
+package SortingAlgorithms.Iterative;
 
 import SortingAlgorithms.services.Sorting;
 
 import java.util.Objects;
 
-public class InsertionSort implements Sorting {
+public class InsertionSortIterative implements Sorting {
     @Override
     public void sort(double[] nums) {
         validParams(nums);

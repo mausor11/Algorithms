@@ -1,11 +1,10 @@
-package SortingAlgorithms.QuickSorts.Iterative.Lomuto;
+package SortingAlgorithms.Iterative.QuickSorts.Lomuto;
 
 
 import SortingAlgorithms.services.Sorting;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class QuickSortIterativeWithInSortLomuto implements Sorting {
 

@@ -1,13 +1,13 @@
-package SortingAlgorithms.QuickSorts.Iterative;
+package SortingAlgorithms.Iterative.QuickSorts;
 
 import SortingAlgorithms.services.Sorting;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuickSortIterativeMedianOf3 implements Sorting {
+public class QuickSortIterative implements Sorting {
     /**
-     * This method takes a {@code double} table and sorts using "Quick Sort Median of Three"
+     * This method takes a {@code double} table and sorts using "Quick Sort Classic Version"
      * @param nums
      *          Unsorted table
      * @throws IllegalArgumentException table is null
@@ -19,7 +19,6 @@ public class QuickSortIterativeMedianOf3 implements Sorting {
         }
 
         quicksort(nums);
-
     }
 
     private void quicksort(double[] data) {
@@ -31,6 +30,7 @@ public class QuickSortIterativeMedianOf3 implements Sorting {
         ends.add(right);
         int n = 1;
         int pivot;
+
         if (left < right) {
 
             while (n > 0) {
@@ -54,50 +54,37 @@ public class QuickSortIterativeMedianOf3 implements Sorting {
     }
 
     private int splitData(double[] data, int start, int end) {
-        sortFirstMidLastElements(data, start, end);
         int left = start + 1;
-        int right = end - 1;
-        int pivot = end - 1;
+        int right = end;
+
         while (left < right) {
-            while (left < right && data[left] < data[pivot]) {
+            while (left < right && data[left] < data[start]) {
                 left++;
             }
 
-            while (left < right && data[right] >= data[pivot]) {
+            while (left < right && data[right] >= data[start]) {
                 right--;
             }
+
             swap(data, left, right);
         }
 
-        swap(data, left, pivot);
+        if (data[left] >= data[start]) {
+            left--;
+        }
+
+        swap(data, start, left);
+
         return left;
     }
 
-    private void sortFirstMidLastElements(double[] nums, int start, int end) {
-        int mid = start + ((end - start) / 2) + isNextTo(start, end);
-        double[] median = new double[]{nums[start], nums[mid], nums[end]};
-
-        for (int i = 1; i < median.length; i++) {
-            double key = median[i];
-            int j = i - 1;
-
-            while (j >= 0 && median[j] > key) {
-                median[j + 1] = median[j];
-                j--;
+    public void printTab(double[] tab) {
+        if (tab != null) {
+            System.out.print("[");
+            for (int i = 0; i < tab.length - 1; i++) {
+                System.out.print(tab[i] + ",");
             }
-            median[j + 1] = key;
+            System.out.println(tab[tab.length - 1] + "]");
         }
-        nums[start] = median[0];
-        nums[mid] = median[1];
-        nums[end] = median[2];
-        swap(nums, mid, end - 1);
-
-    }
-
-    private int isNextTo(int start, int end) {
-        if (end - start == 1) {
-            return 1;
-        }
-        return 0;
     }
 }

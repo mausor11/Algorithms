@@ -1,14 +1,12 @@
-package SortingAlgorithms.QuickSorts.Iterative.Lomuto;
+package SortingAlgorithms.Iterative.QuickSorts.Hoare;
 
 
 import SortingAlgorithms.services.Sorting;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class QuickSortIterativeLomuto implements Sorting {
-
+public class QuickSortIterativeHoare implements Sorting {
     @Override
     public void sort(double[] nums) {
         validateParams(nums);
@@ -34,9 +32,9 @@ public class QuickSortIterativeLomuto implements Sorting {
                     left = starts.remove(n);
                     right = ends.remove(n);
                     pivot = splitData(data, left, right);
-                    if (pivot - 1 > left) {
+                    if (pivot > left) {
                         starts.add(left);
-                        ends.add(pivot - 1);
+                        ends.add(pivot);
                         n++;
                     }
 
@@ -47,30 +45,29 @@ public class QuickSortIterativeLomuto implements Sorting {
                     }
                 }
             }
-        } else {
-            System.out.println("W");
         }
 
-    }
 
+    }
     private int splitData(double[] data, int start, int end) {
-        double pivot = data[end];
+        double pivot = data[start];
 
-        int a = start - 1;
-        int b = start;
+        int left = start - 1;
+        int right = end + 1;
+        while(true) {
+            do {
+                left++;
+            } while(data[left] < pivot);
 
-        while (b < end) {
-            if (data[b] <= pivot) {
-                a++;
-                swap(data, a, b);
+            do {
+                right--;
+            } while(data[right] > pivot);
+
+            if(left >= right) {
+                return right;
             }
-            b++;
+            swap(data, left, right);
         }
-        swap(data, a + 1, end);
-        return a + 1;
     }
-
-
-
 
 }

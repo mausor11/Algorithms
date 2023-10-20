@@ -1,21 +1,19 @@
-package SortingAlgorithms.QuickSorts.Iterative.Lomuto;
-
+package SortingAlgorithms.Iterative.QuickSorts.Lomuto;
 
 import SortingAlgorithms.services.Sorting;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Random;
 
-public class QuickSortIterativeRandomLomuto implements Sorting {
-
+public class QuickSortIterativeMedian3Lomuto implements Sorting {
     @Override
     public void sort(double[] nums) {
         validateParams(nums);
 
         quicksort(nums);
+
     }
+
     private void quicksort(double[] data) {
         List<Integer> starts = new ArrayList<>();
         List<Integer> ends = new ArrayList<>();
@@ -25,7 +23,6 @@ public class QuickSortIterativeRandomLomuto implements Sorting {
         ends.add(right);
         int n = 1;
         int pivot;
-
         if (left < right) {
 
             while (n > 0) {
@@ -49,10 +46,11 @@ public class QuickSortIterativeRandomLomuto implements Sorting {
     }
 
     private int splitData(double[] data, int start, int end) {
-        double pivot = data[randomPivot(data, start, end)];
+        sortFirstMidLastElements(data, start, end);
+        double pivot = data[end];
 
-        int a = start - 1;
-        int b = start;
+        int a = start;
+        int b = start + 1;
 
         while (b < end) {
             if (data[b] <= pivot) {
@@ -65,12 +63,32 @@ public class QuickSortIterativeRandomLomuto implements Sorting {
         return a + 1;
     }
 
-    private int randomPivot(double[] data, int start, int end) {
-        Random random = new Random();
-        int pivot = random.nextInt(end - start + 1) + start;
-        swap(data, pivot, end);
+    private void sortFirstMidLastElements(double[] nums, int start, int end) {
+        int mid = start + ((end - start) / 2) + isNextTo(start, end);
+        double[] median = new double[]{nums[start], nums[mid], nums[end]};
 
-        return end;
+        for (int i = 1; i < median.length; i++) {
+            double key = median[i];
+            int j = i - 1;
+
+            while (j >= 0 && median[j] > key) {
+                median[j + 1] = median[j];
+                j--;
+            }
+            median[j + 1] = key;
+        }
+        nums[start] = median[0];
+        nums[mid] = median[1];
+        nums[end] = median[2];
+        swap(nums, mid, end);
+
+    }
+
+    private int isNextTo(int start, int end) {
+        if (end - start == 1) {
+            return 1;
+        }
+        return 0;
     }
 
 

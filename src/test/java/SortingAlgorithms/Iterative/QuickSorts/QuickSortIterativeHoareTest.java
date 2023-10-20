@@ -1,7 +1,6 @@
-package SortingAlgorithms.QuickSorts.Iterative;
+package SortingAlgorithms.Iterative.QuickSorts;
 
-import SortingAlgorithms.QuickSorts.Iterative.Hoare.QuickSortIterativeHoare;
-import SortingAlgorithms.services.Sorting;
+import SortingAlgorithms.Iterative.QuickSorts.Hoare.QuickSortIterativeHoare;
 import SortingAlgorithms.utils.GeneralSortTest;
 
 public class QuickSortIterativeHoareTest extends GeneralSortTest {

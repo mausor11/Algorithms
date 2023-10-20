@@ -1,6 +1,6 @@
-package SortingAlgorithms.QuickSorts.Iterative;
+package SortingAlgorithms.Iterative.QuickSorts;
 
-import SortingAlgorithms.QuickSorts.Iterative.Lomuto.QuickSortIterativeMedian3Lomuto;
+import SortingAlgorithms.Iterative.QuickSorts.Lomuto.QuickSortIterativeMedian3Lomuto;
 import SortingAlgorithms.utils.GeneralSortTest;
 
 public class QuickSortIterativeMedian3LomutoTest extends GeneralSortTest {

@@ -1,8 +1,8 @@
-package SortingAlgorithms;
+package SortingAlgorithms.Iterative;
 
 import SortingAlgorithms.services.Sorting;
 
-public class SelectionSort implements Sorting {
+public class SelectionSortIterative implements Sorting {
     @Override
     public void sort(double[] nums) {
         validateParams(nums);
