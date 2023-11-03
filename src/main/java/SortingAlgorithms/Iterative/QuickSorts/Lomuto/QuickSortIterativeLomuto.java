@@ -46,10 +46,7 @@ public class QuickSortIterativeLomuto implements Sorting {
                     }
                 }
             }
-        } else {
-            System.out.println("W");
         }
-
     }
 
     private int splitData(double[] data, int start, int end) {

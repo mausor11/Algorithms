@@ -1,5 +1,6 @@
-package SortingAlgorithms.Recursive;
+package SortingAlgorithms.Tests.Recursive;
 
+import SortingAlgorithms.Recursive.HeapSortRecursive;
 import SortingAlgorithms.services.Sorting;
 import SortingAlgorithms.utils.GeneralSortTest;
 

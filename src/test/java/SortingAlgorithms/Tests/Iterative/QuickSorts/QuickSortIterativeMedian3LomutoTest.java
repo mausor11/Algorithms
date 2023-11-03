@@ -1,4 +1,4 @@
-package SortingAlgorithms.Iterative.QuickSorts;
+package SortingAlgorithms.Tests.Iterative.QuickSorts;
 
 import SortingAlgorithms.Iterative.QuickSorts.Lomuto.QuickSortIterativeMedian3Lomuto;
 import SortingAlgorithms.utils.GeneralSortTest;

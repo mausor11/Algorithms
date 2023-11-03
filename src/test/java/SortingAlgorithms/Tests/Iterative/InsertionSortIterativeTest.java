@@ -1,4 +1,4 @@
-package SortingAlgorithms.Iterative;
+package SortingAlgorithms.Tests.Iterative;
 
 import SortingAlgorithms.Iterative.InsertionSortIterative;
 import SortingAlgorithms.utils.GeneralSortTest;
