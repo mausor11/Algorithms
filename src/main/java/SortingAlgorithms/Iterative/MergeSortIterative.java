@@ -7,9 +7,9 @@ public class MergeSortIterative implements Sorting {
     public void sort(double[] nums) {
         validateParams(nums);
 
-        mergesort(nums);
+        mergeSort(nums);
     }
-    private void mergesort(double[] A) {
+    private void mergeSort(double[] A) {
         for(int sub_size = 1; sub_size < A.length; sub_size *= 2) {
             for(int left = 0; left < A.length; left += 2*sub_size) {
                 int mid = Math.min(left + sub_size - 1, A.length -1);

@@ -7,9 +7,9 @@ public class SelectionSortIterative implements Sorting {
     public void sort(double[] nums) {
         validateParams(nums);
 
-        selectionsort(nums);
+        selectionSort(nums);
     }
-    private void selectionsort(double[] nums) {
+    private void selectionSort(double[] nums) {
         int arraySize = nums.length;
         int minValID;
         for (int i = 0; i < arraySize; i++) {
